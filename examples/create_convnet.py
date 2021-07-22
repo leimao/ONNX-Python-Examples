@@ -185,7 +185,6 @@ def main() -> None:
 
     model_def = onnx.shape_inference.infer_shapes(model_def)
 
-    # print("The model is:\n{}".format(model_def))
     onnx.checker.check_model(model_def)
 
     onnx.save(model_def, "convnet.onnx")
