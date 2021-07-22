@@ -1,6 +1,6 @@
 import onnx
-import numpy as np
 from typing import Iterable
+
 
 def print_tensor_data(initializer: onnx.TensorProto) -> None:
 
@@ -16,15 +16,16 @@ def print_tensor_data(initializer: onnx.TensorProto) -> None:
         print(initializer.uint64_data)
     else:
         raise NotImplementedError
-    
+
     return
+
 
 def dims_prod(dims: Iterable) -> int:
 
     prod = 1
     for dim in dims:
         prod *= dim
-    
+
     return prod
 
 
@@ -42,7 +43,9 @@ def main() -> None:
         # Data type:
         # https://github.com/onnx/onnx/blob/rel-1.9.0/onnx/onnx.proto
         print("Tensor information:")
-        print(f"Tensor Name: {initializer.name}, Data Type: {initializer.data_type}, Shape: {initializer.dims}")
+        print(
+            f"Tensor Name: {initializer.name}, Data Type: {initializer.data_type}, Shape: {initializer.dims}"
+        )
         print("Tensor value before modification:")
         print_tensor_data(initializer)
         # Replace the value with new value.
@@ -60,7 +63,7 @@ def main() -> None:
         print(node.name)
         print(node.op_type)
         print(node.input)
-        print(node.output)     
+        print(node.output)
         # Modify batchnorm attributes.
         if node.op_type == "BatchNormalization":
             print("Attributes before adding:")
@@ -81,7 +84,9 @@ def main() -> None:
                 input_shape.append(None)
             else:
                 input_shape.append(d.dim_value)
-        print(f"Input Name: {graph_input.name}, Input Data Type: {graph_input.type.tensor_type.elem_type}, Input Shape: {input_shape}")
+        print(
+            f"Input Name: {graph_input.name}, Input Data Type: {graph_input.type.tensor_type.elem_type}, Input Shape: {input_shape}"
+        )
 
     outputs = graph_def.output
     for graph_output in outputs:
@@ -91,13 +96,16 @@ def main() -> None:
                 output_shape.append(None)
             else:
                 output_shape.append(d.dim_value)
-        print(f"Output Name: {graph_output.name}, Output Data Type: {graph_output.type.tensor_type.elem_type}, Output Shape: {output_shape}")
+        print(
+            f"Output Name: {graph_output.name}, Output Data Type: {graph_output.type.tensor_type.elem_type}, Output Shape: {output_shape}"
+        )
 
     # To modify inputs and outputs, we would rather create new inputs and outputs.
     # Using onnx.helper.make_tensor_value_info and onnx.helper.make_model
 
     onnx.checker.check_model(model)
     onnx.save(model, "convnets_modified.onnx")
+
 
 if __name__ == "__main__":
 
