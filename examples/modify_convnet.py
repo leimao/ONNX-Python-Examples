@@ -72,6 +72,7 @@ def main() -> None:
             # Add epislon for the BN nodes.
             epsilon_attribute = onnx.helper.make_attribute("epsilon", 1e-06)
             node.attribute.extend([epsilon_attribute])
+            # node.attribute.pop() # Pop an attribute if necessary.
             print("Attributes after adding:")
             for attribute in node.attribute:
                 print(attribute)

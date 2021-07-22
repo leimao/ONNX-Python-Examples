@@ -49,7 +49,7 @@ $ python modify_convnet.py
 
 ### References
 
-
+* [Creating and Modifying ONNX Model Using ONNX Python API](https://leimao.github.io/blog/ONNX-Python-API/)
 * [ONNX.Helper](https://github.com/onnx/onnx/blob/rel-1.9.0/onnx/helper.py)
 * [ONNX.Proto](https://github.com/onnx/onnx/blob/rel-1.9.0/onnx/onnx.proto)
 * [Python API Overview](https://github.com/onnx/onnx/blob/rel-1.9.0/docs/PythonAPIOverview.md)

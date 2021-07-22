@@ -8,6 +8,7 @@ def create_initializer_tensor(
         data_type: onnx.TensorProto = onnx.TensorProto.FLOAT
 ) -> onnx.TensorProto:
 
+    # (TensorProto)
     initializer_tensor = onnx.helper.make_tensor(
         name=name,
         data_type=data_type,
