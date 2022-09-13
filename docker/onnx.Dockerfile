@@ -48,5 +48,5 @@ ENV LANG en_US.UTF-8
 ENV LANGUAGE en_US.UTF-8
 
 
-RUN pip install onnx==1.9.0 onnxruntime==1.8.0
+RUN pip install onnx==1.12.0 onnxruntime==1.12.1
 
